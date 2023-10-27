@@ -3,15 +3,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-
-public class TitleCheck extends WebDriverSetup {
+public class TitleCheckTest extends WebDriverSetup {
     @ParameterizedTest
     @Tag("regression")
     @CsvFileSource(files = "src/test/resources/websiteTitles.csv", numLinesToSkip = 1)
-    void titleTest(String url, String websiteTitle) {
+    void titleFromCsvShouldBeTheSameAsInWebsiteHtmlHead(String url, String websiteTitle) {
         driver.get(url);
         assertThat(driver.getTitle()).isEqualTo(websiteTitle);
     }
-
 }
