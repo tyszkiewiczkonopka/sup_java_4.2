@@ -1,55 +1,83 @@
+import assertions.CustomAssertions;
+import logging.LoggerUtil;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+public class TitleCheckTest extends WebDriverSetup {
+    private final LoggerUtil loggerUtil = new LoggerUtil(this.getClass());
 
-public class TitleCheckTest extends WebDriverSetup{
     @Test
     @Tag("regression")
     @Tag("sii.pl")
-    void siiWebsiteTitleShouldMatchTitleFromSource(){
-        String title = "Rozwiązania i usługi IT, inżynierii i BPO - Sii Polska";
+    void siiWebsiteTitleShouldMatchTitleFromSource() {
+        String title = "Rozwiązania i usługi IT, inżynierii i BPO - Sii";
+        String url = "https://sii.pl/";
 
-        driver.get("https://sii.pl/");
-        assertThat(driver.getTitle()).isEqualTo(title);
+        loggerUtil.logStartingTest(url);
+
+        driver.get(url);
+        CustomAssertions.assertTitleEquals(url, driver, title);
+
+        loggerUtil.logEndingTest(url);
     }
 
     @Test
     @Tag("regression")
     @Tag("onet.pl")
-    void onetWebsiteTitleShouldMatchTitleFromSource(){
+    void onetWebsiteTitleShouldMatchTitleFromSource() {
         String title = "Onet – Jesteś na bieżąco";
+        String url = "https://www.onet.pl";
 
-        driver.get("https://www.onet.pl");
-        assertThat(driver.getTitle()).isEqualTo(title);
+        loggerUtil.logStartingTest(url);
+
+        driver.get(url);
+        CustomAssertions.assertTitleEquals(url, driver, title);
+
+        loggerUtil.logEndingTest(url);
     }
+
     @Test
     @Tag("regression")
     @Tag("kotuszkowo.pl")
-    void kotuszkowoWebsiteTitleShouldMatchTitleFromSource(){
+    void kotuszkowoWebsiteTitleShouldMatchTitleFromSource() {
         String title = "Kotuszkowo- blog o kotach";
+        String url = "http://kotuszkowo.pl/";
 
-        driver.get("http://kotuszkowo.pl/");
-        assertThat(driver.getTitle()).isEqualTo(title);
+        loggerUtil.logStartingTest(url);
+
+        driver.get(url);
+        CustomAssertions.assertTitleEquals(url, driver, title);
+
+        loggerUtil.logEndingTest(url);
     }
+
     @Test
     @Tag("regression")
     @Tag("filmweb.pl")
-    void filmwebWebsiteTitleShouldMatchTitleFromSource(){
+    void filmwebWebsiteTitleShouldMatchTitleFromSource() {
         String title = "Filmweb - filmy takie jak Ty!";
+        String url = "https://www.filmweb.pl/";
 
-        driver.get("https://www.filmweb.pl/");
-        assertThat(driver.getTitle()).isEqualTo(title);
+        loggerUtil.logStartingTest(url);
+
+        driver.get(url);
+        CustomAssertions.assertTitleEquals(url, driver, title);
+
+        loggerUtil.logEndingTest(url);
     }
+
     @Test
     @Tag("regression")
     @Tag("selenium.dev")
-    void seleniumWebsiteTitleShouldMatchTitleFromSource(){
+    void seleniumWebsiteTitleShouldMatchTitleFromSource() {
         String title = "WebDriver | Selenium";
+        String url = "https://www.selenium.dev/documentation/webdriver/";
 
-        driver.get("https://www.selenium.dev/documentation/webdriver/");
-        assertThat(driver.getTitle()).isEqualTo(title);
+        loggerUtil.logStartingTest(url);
+
+        driver.get(url);
+        CustomAssertions.assertTitleEquals(url, driver, title);
+
+        loggerUtil.logEndingTest(url);
     }
 }
